@@ -1,0 +1,195 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Campus Bites</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+:root{--bg:#FFF6E5;--sf:#fff;--fg:#1B1B2F;--mu:#5E5E73;--ln:#1B1B2F;--ac:#FF5A36;--ac2:#2D5BFF;--ok:#12805C;--okb:#D5F5E6;--wn:#8A5A00;--wnb:#FFE9A8;--sh:#1B1B2F;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#14141F;--sf:#1F1F30;--fg:#F5F1E6;--mu:#A9A9BE;--ln:#F5F1E6;--ac:#FF7A5C;--ac2:#7C9BFF;--ok:#6FE0B0;--okb:#143A2C;--wn:#FFD16B;--wnb:#3D2F0A;--sh:#000;color-scheme:dark}}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.45 "DM Sans",system-ui,sans-serif;padding:0 max(14px,env(safe-area-inset-left,0px)) 90px}
+h1,h2,h3{font-family:"Bricolage Grotesque",system-ui,sans-serif;margin:0;line-height:1.1}
+button,input,select{font:inherit;color:inherit}button{cursor:pointer}
+.w{max-width:960px;margin:0 auto}
+.hd{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:16px 0 8px;flex-wrap:wrap}
+.logo{font:800 28px "Bricolage Grotesque",sans-serif}.logo b{color:var(--ac)}
+.card{background:var(--sf);border:2px solid var(--ln);border-radius:16px;box-shadow:4px 4px 0 var(--sh);padding:14px}
+.btn{background:var(--ac);color:#fff;border:2px solid var(--ln);border-radius:12px;padding:10px 14px;font-weight:700;min-height:44px;box-shadow:2px 2px 0 var(--sh);transition:transform .1s}
+.btn:active{transform:translate(2px,2px);box-shadow:none}.btn.b{background:var(--ac2)}.btn.g{background:var(--sf);color:var(--fg)}.btn:disabled{opacity:.45}
+.f{display:flex;flex-direction:column;gap:3px;margin-bottom:10px}.f label{font-size:12px;font-weight:700;color:var(--mu);text-transform:uppercase;letter-spacing:.06em}
+.f input,.f select{background:var(--bg);border:2px solid var(--ln);border-radius:10px;padding:9px 11px;min-height:44px;width:100%}
+.seg{display:flex;gap:6px;margin-bottom:12px}.seg button{flex:1;background:var(--sf);border:2px solid var(--ln);border-radius:12px;padding:10px;font-weight:700}.seg button.on{background:var(--ac2);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:14px;margin-top:12px}
+.shop{display:flex;flex-direction:column;gap:6px;text-align:left;cursor:pointer;transition:transform .15s}.shop:hover{transform:translateY(-3px) rotate(-.6deg)}
+.em{font-size:38px;width:62px;height:62px;display:grid;place-items:center;border-radius:14px;border:2px solid var(--ln)}
+.pill{display:inline-block;font-size:12px;font-weight:700;border-radius:99px;padding:2px 10px;background:var(--okb);color:var(--ok)}.pill.w{background:var(--wnb);color:var(--wn)}
+.mu{color:var(--mu);font-size:13px}.err{background:#FFD9D9;color:#8A1C1C;border-radius:10px;padding:8px 10px;margin-bottom:10px;font-weight:500}
+.nav{position:fixed;left:0;right:0;bottom:0;display:flex;gap:8px;justify-content:center;padding:10px 14px calc(10px + env(safe-area-inset-bottom,0px));background:var(--bg);border-top:2px solid var(--ln);z-index:5}
+.nav button{flex:1;max-width:240px;background:var(--sf);border:2px solid var(--ln);border-radius:12px;padding:10px;font-weight:700}.nav button.on{background:var(--ac);color:#fff}
+.scrim{position:fixed;inset:0;background:#0009;z-index:9;display:flex;align-items:flex-end;justify-content:center}
+.sheet{background:var(--bg);border:2px solid var(--ln);border-radius:20px 20px 0 0;width:min(100%,560px);max-height:92vh;overflow:auto;padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px));animation:up .25s}
+@keyframes up{from{transform:translateY(40px);opacity:0}}
+.it{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 0;border-bottom:1px dashed var(--mu)}
+.q{display:flex;align-items:center;gap:8px}.q button{width:36px;height:36px;border-radius:10px;border:2px solid var(--ln);background:var(--sf);font-weight:800}
+.steps{display:flex;gap:4px;margin:8px 0}.steps i{flex:1;height:10px;border-radius:5px;background:var(--mu);opacity:.3}.steps i.d{background:var(--ok);opacity:1}
+.sms{background:var(--wnb);color:var(--wn);border:2px dashed var(--wn);border-radius:12px;padding:10px;font-weight:700;margin-bottom:10px}
+.otp{letter-spacing:.5em;text-align:center;font-size:24px;font-weight:800}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:14px}.cols h3{margin-bottom:8px}.cols .card{margin-bottom:12px}
+.toast{position:fixed;top:calc(10px + env(safe-area-inset-top,0px));left:50%;transform:translateX(-50%);z-index:20;background:var(--ac);color:#fff;border:2px solid var(--ln);border-radius:14px;padding:12px 16px;font-weight:700;box-shadow:4px 4px 0 var(--sh);max-width:92vw;text-align:center}.big{font-size:44px;font-weight:800}details summary{cursor:pointer}.alert{background:var(--wnb);color:var(--wn);animation:pl 1.2s infinite}@keyframes pl{50%{transform:scale(1.02);box-shadow:4px 4px 0 var(--ac)}}
+a{color:var(--ac2);font-weight:700}[hidden]{display:none!important}
+</style></head><body><div class="w" id="app"></div><div id="sheet"></div><div id="toast" class="toast" hidden></div>
+<script>
+const SH=[
+[1,"Swami Paratha","🫓","#FFD9A0",8,[["Aloo Paratha",45],["Paneer Paratha",60],["Gobi Paratha",50],["Curd + Pickle",15]]],
+[2,"Samadhan Pohe","🍚","#FFF1A8",5,[["Kanda Pohe",25],["Misal Pohe",35],["Sabudana Khichdi",40],["Cutting Chai",10]]],
+[3,"Anna Dosa","🥞","#CFEFD2",10,[["Plain Dosa",40],["Masala Dosa",60],["Idli (2 pcs)",30],["Medu Vada",35]]],
+[4,"Chai Tapri","☕","#F3D6C2",4,[["Cutting Chai",10],["Ginger Chai",15],["Coffee",20],["Bun Maska",25]]],
+[5,"Jai Vada Pav","🍔","#FFD0CC",5,[["Vada Pav",20],["Cheese Vada Pav",35],["Misal Pav",50],["Samosa Pav",25]]],
+[6,"Pav Bhaji Point","🍛","#FFC9B0",12,[["Pav Bhaji",70],["Cheese Pav Bhaji",90],["Extra Pav",10],["Masala Pav",40]]],
+[7,"Dragon Chinese","🍜","#D3E4FF",12,[["Veg Noodles",60],["Schezwan Rice",70],["Manchurian",65],["Spring Roll",50]]],
+[8,"Sandwich Junction","🥪","#E8F5C8",7,[["Veg Grilled",45],["Cheese Grilled",60],["Bombay Masala",50],["Cold Coffee",40]]],
+[9,"Misal House","🌶️","#FFD6D6",9,[["Kolhapuri Misal",60],["Usal Pav",45],["Sev Usal",50],["Buttermilk",15]]],
+[10,"Fresh Juice Centre","🥤","#FFE1F0",5,[["Orange Juice",40],["Sugarcane",25],["Mosambi",40],["Mango Shake",55]]],
+[11,"Biryani Bowl","🍲","#FDE7B0",15,[["Veg Biryani",90],["Paneer Biryani",110],["Pulao",70],["Raita",15]]],
+[12,"Momo Mania","🥟","#E5DBFF",10,[["Veg Momos (6)",50],["Fried Momos (6)",60],["Paneer Momos (6)",70],["Maggi",35]]]];
+const YRS=["First Year","Second Year","Third Year","Final Year"],ST=["New","Preparing","Ready","Collected"];
+const $=s=>document.querySelector(s),esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const S={menus:{},dbs:"connecting",otps:{},seen:null,mode:"student",reg:false,u:null,tab:"shops",orders:[],shops:{},cart:{},sheet:null,otp:null,err:""};
+let users={},db=null;const mem={};
+const ls={g(k){try{return localStorage.getItem(k)}catch(e){return mem[k]??null}},s(k,v){try{localStorage.setItem(k,v)}catch(e){mem[k]=v}}};
+try{users=JSON.parse(ls.g("cb_users")||"{}");}catch(e){}
+const saveU=()=>ls.s("cb_users",JSON.stringify(users));
+const hp=(m,p)=>{let h=5381;for(const c of m+":"+p)h=((h<<5)+h+c.charCodeAt(0))|0;return""+h};
+// ---- data layer: shared db when available, device-only otherwise
+try{S.otps=JSON.parse(ls.g("cb_otps")||"{}")}catch(e){}
+try{S.orders=JSON.parse(ls.g("cb_orders")||"[]")}catch(e){}
+function beep(){try{const a=new(window.AudioContext||window.webkitAudioContext)(),g=a.createGain(),w=a.createOscillator();w.connect(g);g.connect(a.destination);w.frequency.value=880;g.gain.value=.15;w.start();w.stop(a.currentTime+.3)}catch(e){}}
+const pend=()=>S.u&&S.u.role==="owner"?S.orders.filter(x=>x.shop===S.u.shop&&x.st===0).length:0;
+async function exportCsv(){const id=S.u.shop,rows=[["Token","Date","Student","Dept","Year","Roll","Items","Total","Payment"]].concat(S.orders.filter(o=>o.shop===id&&o.st===3).map(o=>[o.tok,new Date(o.t).toLocaleString(),o.name,o.dept,o.year,o.roll,o.items.map(i=>i[1]+"x "+i[0]).join("; "),o.total,o.pm])),csv=rows.map(r=>r.map(c=>'"'+String(c).replace(/"/g,'""')+'"').join(",")).join("\n");
+try{const d=await claude.use("downloads");if(!d)throw 0;await d.save({filename:"order-history.csv",data:csv})}catch(e){toast("Download is not available here.")}}
+function toast(m,ms=5000){const t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(toast.t);toast.t=setTimeout(()=>t.hidden=true,ms)}
+function ping(m){toast(m,12000);beep();try{if(Notification.permission==="granted")new Notification("Campus Bites",{body:m})}catch(e){}try{navigator.vibrate([250,100,250])}catch(e){}}
+function dbChip(){const d={connecting:["⏳ Connecting database…","w"],online:["🗄️ Database connected",""],readonly:["⚠️ Database read-only","w"],offline:["📴 Offline · this device only","w"]}[S.dbs];return`<span class="pill dbc ${d[1]}">${d[0]}</span>`}
+function setDbs(x){S.dbs=x;document.querySelectorAll(".dbc").forEach(e=>e.outerHTML=dbChip())}
+async function dbSet(col,id,d){if(!db)return false;for(let i=0;i<3;i++){try{await db.collection(col).doc(id).set(d);if(S.dbs!=="online")setDbs("online");return true}catch(e){if(i<2)await new Promise(r=>setTimeout(r,700*(i+1)))}}setDbs("readonly");return false}
+async function putOrder(o){const i=S.orders.findIndex(x=>x.id===o.id);i<0?S.orders.push(o):S.orders[i]=o;delete o.loc;draw();
+const ok=await dbSet("orders",o.id,o);if(!ok){o.loc=1;if(db)toast("⚠️ Could not save to the database (view-only access?). Kept on this device only.",9000)}ls.s("cb_orders",JSON.stringify(S.orders))}
+async function putShop(id,d){S.shops[id]={...S.shops[id],...d};return dbSet("shops",""+id,S.shops[id])}
+const menuOf=id=>S.menus[id]?.items||SH[id-1][5].map(m=>[m[0],m[1],1]);
+async function hh(m,p){try{const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode("cb26|"+m+"|"+p));return[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("")}catch(e){return hp(m,p)}}
+async function lookup(k){let err="";if(db){try{const sn=await db.collection("users").doc(k).get();if(sn.exists)return{rec:sn.data(),src:"db",err}}catch(e){err=e.code||e.message||"error"}}
+return{rec:users[k]||null,src:users[k]?"device":"none",err}}
+function applyOrders(a){const ids=new Set(a.map(x=>x.id)),loc=S.orders.filter(x=>x.loc&&!ids.has(x.id));S.orders=a.concat(loc);ls.s("cb_orders",JSON.stringify(S.orders));if(S.dbs==="online")loc.forEach(x=>putOrder(x));redraw()}
+function applyMap(key,docs){S[key]={};docs.forEach(x=>S[key][x.id]=x.data());redraw()}
+async function poll(all){if(!db)return;try{const o=await db.collection("orders").get();applyOrders(o.docs.map(x=>x.data()));if(all){const[s,m]=await Promise.all([db.collection("shops").get(),db.collection("menus").get()]);applyMap("shops",s.docs);applyMap("menus",m.docs)}}catch(e){}}
+function redraw(){if(!S.u)return;checkNew();checkStudent();if(!S.sheet&&document.activeElement?.tagName!=="INPUT")draw()}
+const active=id=>S.orders.filter(o=>o.shop===id&&o.st<2).length;
+const eta=(sh,qty)=>sh[4]+qty*2+active(sh[0])*3;
+const phone=id=>S.shops[id]?.phone;
+const inr=n=>"₹"+n;
+// ---- auth
+function auth(){const r=S.reg,o=S.mode==="owner";
+$("#app").innerHTML=`<div class="hd"><div class="logo">Campus<b>Bites</b> 🍴</div>${dbChip()}</div><div class="card" style="max-width:440px;margin:10px auto">
+<h2>${r?"Create account":"Welcome back"}</h2><p class="mu">Skip the queue. Order from 12 food court stores, collect when ready.</p>
+<div class="seg"><button class="${o?"":"on"}" onclick="S.mode='student';S.err='';auth()">🎓 Student</button><button class="${o?"on":""}" onclick="S.mode='owner';S.err='';auth()">🏪 Shop owner</button></div>
+${S.err?`<div class="err">${esc(S.err)}</div>`:""}
+${r?`<div class="f"><label>Your name</label><input id="a-n" autocomplete="name"></div>`:""}
+<div class="f"><label>Mobile number</label><input id="a-m" type="tel" inputmode="numeric" maxlength="10" placeholder="10 digits"></div>
+${r&&o?`<div class="f"><label>Your shop</label><select id="a-s">${SH.map(s=>`<option value="${s[0]}">${s[0]}. ${s[1]}</option>`).join("")}</select></div>`:""}
+${r&&!o?`<div class="f"><label>College name</label><input id="a-c"></div><div class="f"><label>Department</label><input id="a-d" placeholder="e.g. Computer Engg"></div><div class="f"><label>Academic year</label><select id="a-y">${YRS.map(y=>`<option>${y}</option>`).join("")}</select></div><div class="f"><label>Roll number</label><input id="a-r"></div>`:""}
+<div class="f"><label>4-digit PIN</label><input id="a-p" type="password" inputmode="numeric" maxlength="4" autocomplete="off"></div>
+<button class="btn" style="width:100%" onclick="go()">${r?"Create account":"Log in"}</button>
+<button class="btn g" style="width:100%;margin-top:8px" onclick="S.reg=!S.reg;S.err='';auth()">${r?"I already have an account":"New here? Sign up"}</button>
+<p class="mu">Accounts are saved in the shared database, so you can log in from any phone.</p></div>`}
+async function go(){const g=i=>($(i)?.value||"").trim(),o=S.mode==="owner",m=g("#a-m").replace(/\D/g,""),p=$("#a-p").value.trim(),k=(o?"o":"s")+m,bad=e=>{S.err=e;auth()};
+try{Notification.requestPermission()}catch(e){}
+if(!/^[6-9]\d{9}$/.test(m))return bad("Enter a valid 10-digit mobile number.");if(!/^\d{4}$/.test(p))return bad("PIN must be 4 digits.");
+const btn=document.querySelector("#app .btn");if(btn){btn.disabled=true;btn.textContent="Please wait…"}
+await S.ready;const{rec:old,src,err}=await lookup(k),h=await hh(m,p);let rec=old;
+if(S.reg){const n=g("#a-n");if(n.length<2)return bad("Enter your name.");if(old&&src==="db")return bad("This number is already registered. Tap “I already have an account”.");
+ if(o){const sid=+$("#a-s").value;let sd=S.shops[sid];if(db){try{const x=await db.collection("shops").doc(""+sid).get();if(x.exists)sd=x.data()}catch(e){}}
+  if(sd&&sd.phone&&sd.phone!==m)return bad("This shop already has an owner registered.");rec={role:"owner",name:n,m,h,shop:sid,at:Date.now()};await putShop(sid,{phone:m,owner:n})}
+ else{const c=g("#a-c"),d=g("#a-d"),r=g("#a-r");if(!c||!d||!r)return bad("Fill in college, department and roll number.");rec={role:"student",name:n,m,h,college:c,dept:d,year:$("#a-y").value,roll:r,at:Date.now()}}
+ const ok=await dbSet("users",k,rec);if(db&&!ok)toast("⚠️ Account saved on this device only (database is read-only).",8000)}
+else{if(!rec){const alt=await lookup((o?"s":"o")+m);return bad(alt.rec?`This number is registered as a ${o?"student":"shop owner"}. Switch the tab above.`:"No account found for this number. Tap “New here? Sign up” first."+(err?` (database: ${err})`:""))}
+ if(rec.h!==h&&rec.h!==hp(m,p))return bad("Wrong PIN for this number.");if(src==="device"&&db)await dbSet("users",k,rec)}
+users[k]=rec;saveU();ls.s("cb_sess",k);await start(rec)}
+async function start(rec){S.u=rec;S.reg=false;S.err="";S.seen=null;S.stSeen=null;S.tab=rec.role==="owner"?"queue":"shops";await poll(true);draw()}
+async function resume(){const k=ls.g("cb_sess");if(!k)return;const{rec}=await lookup(k);if(rec)await start(rec)}
+// ---- shell
+function draw(){if(!S.u)return;const o=S.u.role==="owner";checkNew();checkStudent();const nw=pend();
+$("#app").innerHTML=`<div class="hd"><div class="logo">Campus<b>Bites</b> 🍴</div>${dbChip()}<div><span class="mu">${esc(S.u.name)}${o?" · "+esc(SH[S.u.shop-1][1]):" · "+esc(S.u.college)}</span> <button class="btn g" style="min-height:36px;padding:4px 10px" onclick="S.u=null;S.seen=null;S.stSeen=null;S.cart={};ls.s('cb_sess','');closeS();auth()">Log out</button></div></div>
+<div id="v">${o?ownerView():S.tab==="shops"?shopsView():myOrders()}</div>
+<div class="nav">${o?`<button class="${S.tab==="queue"?"on":""}" onclick="S.tab='queue';draw()">🔔 Orders${nw?` (${nw} new)`:""}</button><button class="${S.tab==="history"?"on":""}" onclick="S.tab='history';draw()">📜 History</button>`:`<button class="${S.tab==="shops"?"on":""}" onclick="S.tab='shops';draw()">🍽️ Stores</button><button class="${S.tab==="mine"?"on":""}" onclick="S.tab='mine';draw()">🧾 My orders (${S.orders.filter(x=>x.sid===S.u.m&&x.st<3).length})</button>`}</div>`}
+const payTxt=o=>o.pm==="upi"?"💳 Online (QR)"+(o.pr?" · received ✔":o.pd?" · student says paid":" · not paid yet"):"💵 Cash"+(o.pr?" · received ✔":" · pay ₹"+o.total+" at pickup");
+const okQr=q=>/^data:image\/jpeg;base64,[A-Za-z0-9+\/=]+$/.test(q||"");
+function checkNew(){if(!S.u||S.u.role!=="owner")return;const mine=S.orders.filter(o=>o.shop===S.u.shop);
+if(!S.seen){S.seen=new Set(mine.map(o=>o.id));const p=pend();if(p)ping("🔔 You have "+p+" order"+(p>1?"s":"")+" waiting for you!")}
+else mine.forEach(o=>{if(!S.seen.has(o.id)){S.seen.add(o.id);ping(`🔔 New order #${o.tok} from ${o.name} · ${inr(o.total)} · ${o.pm==="upi"?"Online":"Cash"}`)}});
+document.title=pend()?"("+pend()+") New order! · Campus Bites":"Campus Bites"}
+function checkStudent(){if(!S.u||S.u.role!=="student")return;const mine=S.orders.filter(o=>o.sid===S.u.m);if(!S.stSeen){S.stSeen={};mine.forEach(o=>S.stSeen[o.id]=o.st);return}
+mine.forEach(o=>{const p=S.stSeen[o.id];S.stSeen[o.id]=o.st;if(p===undefined||p===o.st)return;const sh=SH[o.shop-1][1],m=o.st===1?`✅ ${sh} accepted order #${o.tok}! Your OTP is ${o.otp}. Ready in about ${o.eta} min.`:o.st===2?`🎉 Order #${o.tok} is ready! Show OTP ${o.otp} to collect.`:o.st===4?`❌ ${sh} could not accept order #${o.tok}.`:"";if(m)ping(m)})}
+function shopsView(){return`<h2>Hungry, ${esc(S.u.name.split(" ")[0])}? 😋</h2><p class="mu">Tap a store to see its menu. Wait times update with the queue.</p><div class="grid">${SH.map(s=>{const a=active(s[0]),ph=phone(s[0]);return`<div class="card shop" onclick="openShop(${s[0]})"><div class="em" style="background:${s[3]}">${s[2]}</div><h3>${s[0]}. ${s[1]}</h3><span class="pill ${a>3?"w":""}">${a?a+" in queue":"No queue"} · ~${s[4]+a*3} min</span><span class="mu">📞 ${ph?esc(ph):"Number not added yet"}</span></div>`}).join("")}</div>`}
+function myOrders(){const l=S.orders.filter(o=>o.sid===S.u.m).sort((a,b)=>b.t-a.t);if(!l.length)return`<h2>My orders</h2><p class="mu">Nothing yet. Pick a store and order! 🍕</p>`;
+return`<h2>My orders</h2><div style="display:grid;gap:14px;margin-top:12px">${l.map(o=>{const left=Math.max(0,Math.ceil((o.t+o.eta*60000-Date.now())/60000)),sh=SH[o.shop-1];return`<div class="card"><div style="display:flex;justify-content:space-between;gap:8px"><h3>${sh[2]} ${sh[1]}</h3><b style="font-size:20px">#${esc(o.tok)}</b></div>
+${o.st===4?"":`<div class="steps">${ST.map((s,i)=>`<i class="${i<=o.st?"d":""}"></i>`).join("")}</div>`}<b>${["Sent. Waiting for the shop to accept…","Accepted! Being prepared","Ready! Collect now 🎉","Collected","Declined by the shop"][o.st]}</b>
+${o.st===1||o.st===2?`<div class="sms" style="margin-top:8px;text-align:center">Your OTP: <span style="font-size:26px;letter-spacing:.2em">${esc(o.otp)}</span><div class="mu">Show it to the shop owner when you collect</div></div>`:""}
+<div class="mu">${o.items.map(i=>i[1]+"× "+esc(i[0])).join(", ")} · ${inr(o.total)}<br>${payTxt(o)}</div>${o.st<2?`<div style="margin-top:6px"><span class="pill ${left>10?"w":""}">Ready in about ${left} min</span> <span class="pill">Queue position #${S.orders.filter(x=>x.shop===o.shop&&x.st<2&&x.t<=o.t).length}</span></div>`:""}${phone(o.shop)?`<div style="margin-top:8px"><a href="tel:${esc(phone(o.shop))}">📞 Call ${esc(phone(o.shop))}</a></div>`:""}</div>`}).join("")}</div>`}
+function menuEd(id){const it=S.me||menuOf(id);return`<details class="card" style="margin:10px 0" ${S.meOpen?"open":""} ontoggle="S.meOpen=this.open"><summary><b>🍽️ Edit menu &amp; prices</b></summary>${it.map((m,i)=>`<div class="it" style="flex-wrap:wrap"><input id="mn${i}" value="${esc(m[0])}" style="flex:1;min-width:120px;min-height:40px;border:2px solid var(--ln);border-radius:10px;padding:4px 8px;background:var(--bg)"><span>₹<input id="mp${i}" type="number" min="1" value="${m[1]}" style="width:72px;min-height:40px;border:2px solid var(--ln);border-radius:10px;padding:4px;background:var(--bg)"></span><button class="btn g" style="min-height:40px" onclick="mt(${i})">${m[2]===0?"❌ Sold out":"✅ Available"}</button><button class="btn g" style="min-height:40px" onclick="md(${i})">🗑</button></div>`).join("")}
+<button class="btn g" style="margin:10px 8px 0 0" onclick="ma()">+ Add item</button><button class="btn" onclick="ms()">Save menu</button></details>`}
+function qrEd(id){const q=S.shops[id]?.qr;return`<details class="card" style="margin:10px 0"><summary><b>📱 Payment QR (photo of your scanner)</b></summary><p class="mu">Upload a clear photo or screenshot of your UPI QR. Students scan it to pay.</p>${okQr(q)?`<img src="${q}" alt="Your payment QR" style="width:180px;border-radius:12px;background:#fff;display:block;margin-bottom:8px">`:""}<input type="file" accept="image/*" onchange="upQr(this)"></details>`}
+function ownerView(){const id=S.u.shop,sh=SH[id-1],all=S.orders.filter(o=>o.shop===id),when=t=>new Date(t).toLocaleString([],{dateStyle:"medium",timeStyle:"short"});
+if(S.tab==="history"){const h=all.filter(o=>o.st===3).sort((a,b)=>b.t-a.t),sum=a=>a.reduce((x,o)=>x+o.total,0),td=new Date().toDateString(),tod=h.filter(o=>new Date(o.t).toDateString()===td);
+return`<h2>📜 Order history</h2><button class="btn g" onclick="exportCsv()">⬇️ Download CSV</button><div class="cols" style="margin:12px 0"><div class="card"><div class="mu">Today</div><h2>${inr(sum(tod))}</h2><span class="mu">${tod.length} orders</span></div><div class="card"><div class="mu">All time</div><h2>${inr(sum(h))}</h2><span class="mu">${h.length} orders</span></div></div>
+${h.length?h.map(o=>`<div class="card" style="margin-bottom:12px"><div style="display:flex;justify-content:space-between"><b>#${esc(o.tok)} · ${esc(o.name)}</b><b>${inr(o.total)}</b></div><div class="mu">${when(o.t)} · ${esc(o.dept)} · ${esc(o.year)} · Roll ${esc(o.roll)}</div><div>${o.items.map(i=>i[1]+"× "+esc(i[0])).join(", ")}</div><div class="mu">${payTxt(o)}</div></div>`).join(""):`<p class="mu">Completed orders will be saved here.</p>`}`}
+const qpos={};all.filter(o=>o.st<2).sort((a,b)=>a.t-b.t).forEach((o,i)=>qpos[o.id]=i+1);
+const col=(n,t)=>`<div><h3>${t} (${all.filter(o=>o.st===n).length})</h3>${all.filter(o=>o.st===n).sort((a,b)=>a.t-b.t).map(o=>`<div class="card"><div style="display:flex;justify-content:space-between"><b style="font-size:20px">${qpos[o.id]?"Queue #"+qpos[o.id]+" · ":""}#${esc(o.tok)}</b><b>${inr(o.total)}</b></div>
+<div>${o.items.map(i=>i[1]+"× "+esc(i[0])).join("<br>")}</div><div class="mu" style="margin:6px 0">${esc(o.name)} · ${esc(o.dept)} · ${esc(o.year)} · Roll ${esc(o.roll)}<br>${when(o.t)}</div>
+<div class="pill ${o.pm==="upi"?"":"w"}">${payTxt(o)}</div>
+${n<2?`<div class="mu" style="margin-top:6px">Prep time ${o.eta} min <button class="btn g" style="min-height:32px;padding:2px 8px" onclick="adj('${o.id}',-5)">−5</button> <button class="btn g" style="min-height:32px;padding:2px 8px" onclick="adj('${o.id}',5)">+5</button></div>`:""}
+${n===0?`<button class="btn" style="width:100%;margin-top:8px" onclick="accept('${o.id}')">✅ Accept &amp; send OTP to student</button><button class="btn g" style="width:100%;margin-top:6px;min-height:36px" onclick="decline('${o.id}')">Decline</button>`:n===1?`<button class="btn b" style="width:100%;margin-top:8px" onclick="adv('${o.id}')">Mark ready</button>`:`<div class="f" style="margin:8px 0 0"><label>Student shows OTP</label><input id="v-${o.id}" class="otp" inputmode="numeric" maxlength="4" style="font-size:20px"></div><button class="btn" style="width:100%;margin-top:8px" onclick="verify('${o.id}')">Verify OTP &amp; hand over</button>`}
+${o.pr?"":`<button class="btn g" style="width:100%;margin-top:6px;min-height:36px" onclick="paid('${o.id}')">Mark payment received</button>`}</div>`).join("")||`<p class="mu">Empty</p>`}</div>`;
+const wq=all.filter(o=>o.st<2).length,np=all.filter(o=>o.st===0).length;
+return`<h2>${sh[2]} ${sh[1]}</h2>${np?`<div class="card alert" style="margin:10px 0"><b style="font-size:18px">🔔 ${np} new order${np>1?"s":""} waiting!</b><div>Accept to send the student their OTP.</div></div>`:""}<div class="card" style="margin:10px 0"><b>📋 Queue: ${wq} order${wq===1?"":"s"} in line</b> <span class="mu">· ${all.filter(o=>o.st===2).length} ready for pickup · students see 📞 ${esc(phone(id)||S.u.m)}</span></div>${menuEd(id)}${qrEd(id)}
+<div class="cols" style="margin-top:12px">${col(0,"🆕 New")}${col(1,"🔥 Preparing")}${col(2,"✅ Ready")}</div>`}
+function accept(id){const o=S.orders.find(x=>x.id===id);o.otp=""+Math.floor(1000+Math.random()*9000);o.st=1;putOrder(o)}
+function decline(id){const o=S.orders.find(x=>x.id===id);o.st=4;putOrder(o)}
+function verify(id){const o=S.orders.find(x=>x.id===id),v=($("#v-"+id).value||"").trim();if(v!==o.otp)return toast("❌ Wrong OTP. Ask the student to show it again.",3000);o.st=3;putOrder(o)}
+function adv(id){const o=S.orders.find(x=>x.id===id);o.st++;putOrder(o)}
+function adj(id,d){const o=S.orders.find(x=>x.id===id);o.eta=Math.max(1,o.eta+d);putOrder(o)}
+function paid(id){const o=S.orders.find(x=>x.id===id);o.pr=1;putOrder(o)}
+function rdMe(){const id=S.u.shop,b=S.me||menuOf(id);S.me=b.map((a,i)=>[($("#mn"+i)?.value||a[0]).trim()||a[0],Math.max(1,Math.round(+$("#mp"+i)?.value)||a[1]),a[2]])}
+function mt(i){rdMe();S.me[i][2]=S.me[i][2]===0?1:0;draw()}
+function md(i){rdMe();S.me.splice(i,1);draw()}
+function ma(){rdMe();S.me.push(["New item",50,1]);draw()}
+async function ms(){rdMe();const id=S.u.shop;if(!S.me.length)return toast("Add at least one item.");const d={items:S.me,at:Date.now()};S.menus[id]=d;const ok=await dbSet("menus",""+id,d);S.me=null;toast(ok?"✅ Menu and prices saved":"⚠️ Saved on this device only (no database access).");draw()}
+function upQr(inp){const f=inp.files[0];if(!f)return;const r=new FileReader();r.onload=()=>{const im=new Image();im.onload=async()=>{const sc=Math.min(1,480/Math.max(im.width,im.height)),c=document.createElement("canvas");c.width=Math.round(im.width*sc);c.height=Math.round(im.height*sc);const x=c.getContext("2d");x.fillStyle="#fff";x.fillRect(0,0,c.width,c.height);x.drawImage(im,0,0,c.width,c.height);let q=.85,d=c.toDataURL("image/jpeg",q);while(d.length>90000&&q>.3){q-=.1;d=c.toDataURL("image/jpeg",q)}
+const ok=await putShop(S.u.shop,{qr:d});toast(ok?"✅ Payment QR saved":"⚠️ Saved on this device only (no database access).");draw()};im.onerror=()=>toast("Could not read that image.");im.src=r.result};r.readAsDataURL(f)}
+// ---- ordering sheet
+const closeS=()=>{$("#sheet").innerHTML="";S.sheet=null};
+function openShop(id){S.sheet=id;S.cart={};S.step="menu";S.pm="cash";S.paid=false;S.done=null;sheet()}
+function cartInfo(){const s=SH[S.sheet-1];let q=0,t=0;menuOf(s[0]).forEach((m,i)=>{const n=S.cart[i]||0;q+=n;t+=n*m[1]});return{s,q,t,e:eta(s,q)}}
+function sheet(){const{s,q,t,e}=cartInfo(),ph=phone(s[0]),qr=S.shops[s[0]]?.qr,mn=menuOf(s[0]);let b="";
+if(S.step==="done"){const o=S.done;b=`<div class="card" style="text-align:center"><div style="font-size:44px">📨</div><h3>Order sent to ${s[1]}</h3><div>Token <b>#${esc(o.tok)}</b></div></div><p>You will get a notification with your <b>OTP</b> as soon as the shop accepts your order.</p><div class="pill">⏱️ Ready in about ${o.eta} min</div><p class="mu">${payTxt(o)}</p><button class="btn" style="width:100%" onclick="closeS();S.tab='mine';draw()">View my orders</button>`}
+else if(S.step==="pay"){b=`<h3>Order summary</h3>${mn.map((m,i)=>S.cart[i]?`<div class="it"><span>${S.cart[i]}× ${esc(m[0])}</span><b>${inr(S.cart[i]*m[1])}</b></div>`:"").join("")}
+<div class="it"><b>Total</b><b style="font-size:20px">${inr(t)}</b></div><div class="card" style="margin:12px 0;background:var(--wnb);color:var(--wn)"><b style="font-size:18px">⏱️ Preparation time: about ${e} min</b><div>${active(s[0])?active(s[0])+" orders ahead of you":"No queue right now"}</div></div>
+<h3>How will you pay?</h3><div class="seg" style="margin-top:8px"><button class="${S.pm==="cash"?"on":""}" onclick="S.pm='cash';S.paid=false;sheet()">💵 Cash</button><button class="${S.pm==="upi"?"on":""}" onclick="S.pm='upi';sheet()">📱 Online (QR)</button></div>
+${S.pm==="cash"?`<p class="mu">Pay ${inr(t)} in cash when you collect your order.</p>`:okQr(qr)?`<img src="${qr}" alt="Shop payment QR" style="display:block;width:100%;max-width:260px;margin:0 auto;border-radius:12px;background:#fff"><p class="mu" style="text-align:center">Scan this QR with any UPI app and pay ${inr(t)}</p><button class="btn ${S.paid?"":"g"}" style="width:100%" onclick="S.paid=!S.paid;sheet()">${S.paid?"✅ I have paid":"Tap here after paying"}</button>`:`<div class="err">This store hasn't uploaded a payment QR yet. Please choose cash.</div>`}
+<button class="btn" style="width:100%;margin-top:12px" ${S.pm==="upi"&&!(okQr(qr)&&S.paid)?"disabled":""} onclick="place()">Place order</button><button class="btn g" style="width:100%;margin-top:8px" onclick="S.step='menu';sheet()">Back to menu</button>`}
+else{b=`${mn.map((m,i)=>`<div class="it"><div><b>${esc(m[0])}</b><div class="mu">${inr(m[1])}${m[2]===0?" · Sold out":""}</div></div><div class="q"><button ${m[2]===0?"disabled":""} onclick="qty(${i},-1)">−</button><b>${S.cart[i]||0}</b><button ${m[2]===0?"disabled":""} onclick="qty(${i},1)">+</button></div></div>`).join("")}
+<div class="card" style="margin-top:12px"><b>${q} item${q===1?"":"s"} · ${inr(t)}</b><div><b>⏱️ Preparation time: ~${q?e:s[4]} min</b>${active(s[0])?` (${active(s[0])} orders ahead)`:""}</div></div>
+<button class="btn" style="width:100%;margin-top:10px" ${q?"":"disabled"} onclick="S.step='pay';sheet()">Review order &amp; pay</button>`}
+$("#sheet").innerHTML=`<div class="scrim" onclick="if(event.target===this)closeS()"><div class="sheet"><div style="display:flex;justify-content:space-between;align-items:center"><h2>${s[2]} ${s[1]}</h2><button class="btn g" onclick="closeS()">✕</button></div>
+<p class="mu">${ph?`📞 <a href="tel:${esc(ph)}">${esc(ph)}</a> (shop owner)`:"📞 Owner has not added a number yet"}</p>${b}</div></div>`}
+function qty(i,d){S.cart[i]=Math.max(0,(S.cart[i]||0)+d);sheet()}
+function place(){const{s,q,t,e}=cartInfo(),u=S.u,items=menuOf(s[0]).map((m,i)=>[m[0],S.cart[i]||0]).filter(x=>x[1]),tok=String.fromCharCode(65+Math.floor(Math.random()*26))+Math.floor(10+Math.random()*90);
+const o={id:"o"+Date.now()+Math.floor(Math.random()*99),tok,shop:s[0],sid:u.m,name:u.name,college:u.college,dept:u.dept,year:u.year,roll:u.roll,items,total:t,eta:e,pm:S.pm,pd:S.pm==="upi"?1:0,pr:0,st:0,t:Date.now()};
+S.cart={};S.done=o;S.step="done";S.stSeen&&(S.stSeen[o.id]=0);putOrder(o);sheet()}
+// ---- boot
+auth();setInterval(()=>{if(pend())beep()},20000);setInterval(redraw,30000);let pc=0;setInterval(()=>{if(S.u)poll(++pc%5===0)},6000);
+(async()=>{S.ready=new Promise(r=>S.res=r);S.dbs="connecting";
+try{if(!(window.claude&&claude.use)){setDbs("offline");return}
+const[d,uu]=await Promise.all([claude.use("db"),claude.use("user").catch(()=>null)]);
+if(!d){setDbs("offline");return}db=d;setDbs(uu&&uu.can&&uu.can("data.write")===false?"readonly":"online");
+d.collection("orders").onSnapshot(s=>applyOrders(s.docs.map(x=>x.data())),()=>setDbs("offline"));
+d.collection("shops").onSnapshot(s=>applyMap("shops",s.docs),()=>{});
+d.collection("menus").onSnapshot(s=>applyMap("menus",s.docs),()=>{})}
+catch(e){setDbs("offline")}finally{S.res()}await resume()})();
+</script></body></html>
