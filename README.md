@@ -5,6 +5,8 @@ A full-stack, mobile-first web application built to eliminate long food-court qu
 
 🎯 The Problem & SolutionDuring short college breaks, campus food courts face severe bottlenecks: crowded counters, unorganized verbal orders, and zero visibility into waiting times.CampusBites solves this by digitizing the entire ordering lifecycle across 12 multi-vendor campus stores in a fast, zero-bloat web interface. Students browse live menus, see dynamic preparation times calculated from real-time kitchen load, pay via Cash or UPI QR, and collect their food using a secure 4-digit OTP—while shop owners manage incoming orders on a live Kanban board.
 
+Live Demo Link:[https://yuvrajbhausahebmahajan851-prog.github.io/campus-bits/](https://yuvrajbhausahebmahajan851-prog.github.io/campus-bits/)
+
 ✨ Key Features & Capabilities
 
 🎓 Student Experience
